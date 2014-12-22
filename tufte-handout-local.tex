@@ -1,0 +1,88 @@
+\usepackage{booktabs}   % Prettier  tables
+\usepackage{units}      % Better spacing for units
+\usepackage{csquotes}   % For babel and context-aware quoting
+\usepackage{graphicx}
+\usepackage{blindtext}  % Nonsense textfiller
+\usepackage[super]{nth} % For ordinals
+
+% For booktabs
+% http://tex.stackexchange.com/questions/35348/errors-with-ragged-right-justification-in-tables
+\usepackage{array}
+\usepackage{multirow}
+
+% Everything needed by biblatex and the APA style
+% (in addition no 'nobib,english' above)
+% -----------------------------------------------
+\usepackage{hyphenat} 
+\usepackage[safe=none]{babel} % http://tex.stackexchange.com/questions/191043/error-using-ref-in-captions-with-tufte-and-babel
+\usepackage[backend=biber,style=apa]{biblatex}
+\DeclareLanguageMapping{english}{english-apa}
+\bibliography{library}
+
+% Configure section numbering 
+% ---------------------------
+\setcounter{secnumdepth}{2}
+
+% Adjust margins so they aren't as pretentious
+% --------------------------------------------
+% http://texdoc.net/texmf-dist/doc/latex/geometry/geometry.pdf
+\geometry{
+  textwidth=112mm,       % Original 107mm
+  marginparwidth=44.4mm, % Original 49.4mm
+}
+
+% Set up the graphics package
+% ---------------------------
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+
+% Less italics in headings and TOC
+% --------------------
+\titleformat{\section}
+  [hang]               % Shape
+  {\normalfont\Large}  % Format applied to number & label
+  {\thesection}        % Label
+  {1em}                % Spacing between number & label
+  {\itshape}           % Before the label
+  []                   % Bfter the label
+
+\titleformat{\subsection}
+  [hang]
+  {\normalfont\large}
+  {\thesubsection}
+  {1em}
+  {\itshape}
+  []
+
+\titlecontents{section}
+  [0em]
+  {\vspace{0\baselineskip}\begin{fullwidth}\large}
+  {\hspace*{2em}\contentslabel{2em}}
+  {\hspace*{2em}}
+  {\rmfamily\upshape\qquad\thecontentspage}
+  [\end{fullwidth}]
+\titlecontents{subsection}
+  [0em]
+  {\vspace{0\baselineskip}\begin{fullwidth}\large}
+  {\hspace*{4em}\contentslabel{4em}}
+  {\hspace*{4em}}
+  {\rmfamily\upshape\qquad\thecontentspage}
+  [\end{fullwidth}]
+
+% UCL header/footer requirements
+% -----------------------
+\fancypagestyle{plain}{\fancyhead{}} % No header on the first page
+\fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}}
+\lfoot{\smallcaps{ucjtein}\quad$\cdot$\quad\smallcaps{e}\emph{f}\smallcaps{d}}
+\rfoot{\thepage}
+
+% Mark coursework end
+% -------------------
+\newcommand{\bigend}[1]{
+  \vspace{5\baselineskip}
+  \centerline{\small{\textsf{\textbf{\allcaps{Word count: #1}}}}}
+  \vspace{1\baselineskip}
+  \centerline{\Large{\textsf{\textbf{\allcaps{END}}}}}
+}
+
+\setcaptionfont{\sffamily}
+
