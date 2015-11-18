@@ -35,6 +35,35 @@
 % ---------------------------
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
 
+% Use a nicer sans-serif font
+% ---------------------------
+\usepackage{fontspec,xunicode}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase,Ligatures=TeX}
+%\setsansfont{Avenir}
+%\setsansfont{Helvetica Neue}
+\newfontfamily\futurafont[Path=/Library/Fonts/,
+                          Extension=.ttc,
+                          Ligatures=TeX]{Futura}
+\newcommand{\mysffamily}{\futurafont}
+
+% Nicer maketitle. Just copied from tufte-common and tweaked some parameters.
+% Just remove section to get back default italic title.
+% ---------------------------
+\renewcommand{\maketitle}{%
+  \newpage
+  \global\@topnum\z@               % prevent floats from being placed at the top of the page
+  \begingroup
+    \setlength{\parindent}{0pt}
+    \vspace*{3.0\baselineskip}
+    \begin{fullwidth}
+      \huge\itshape{\@title}\par
+    \end{fullwidth}
+    \vspace{1.0\baselineskip}
+  \endgroup
+  \thispagestyle{plain}            % suppress header
+  \@afterindentfalse\@afterheading % suppress indentation of the next paragraph
+}
+
 % Less italics in headings and TOC
 % --------------------
 \titleformat{\section}
@@ -71,9 +100,9 @@
 % UCL header/footer requirements
 % -----------------------
 \fancypagestyle{plain}{\fancyhead{}} % No header on the first page
-\fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}}
-\lfoot{\smallcaps{abcdef}\quad$\cdot$\quad\smallcaps{e}\emph{f}\smallcaps{d}}
-\rfoot{\thepage}
+\fancyhead[RE,RO]{\mysffamily\smallcaps{\newlinetospace{\plaintitle}}}
+\lfoot{\mysffamily\smallcaps{abcdef}\quad$\cdot$\quad\smallcaps{e}f\smallcaps{d}}
+\rfoot{\mysffamily\thepage}
 
 % Mark coursework end
 % -------------------
