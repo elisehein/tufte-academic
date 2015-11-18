@@ -55,9 +55,7 @@
   \begingroup
     \setlength{\parindent}{0pt}
     \vspace*{3.0\baselineskip}
-    \begin{fullwidth}
-      \huge\itshape{\@title}\par
-    \end{fullwidth}
+    \huge\textsl{\@title}\par
     \vspace{1.0\baselineskip}
   \endgroup
   \thispagestyle{plain}            % suppress header
@@ -100,9 +98,9 @@
 % UCL header/footer requirements
 % -----------------------
 \fancypagestyle{plain}{\fancyhead{}} % No header on the first page
-\fancyhead[RE,RO]{\mysffamily\smallcaps{\newlinetospace{\plaintitle}}}
-\lfoot{\mysffamily\smallcaps{abcdef}\quad$\cdot$\quad\smallcaps{e}f\smallcaps{d}}
-\rfoot{\mysffamily\thepage}
+\fancyhead[RE,RO]{\scriptsize\mysffamily\allcaps{\newlinetospace{\plaintitle}}}
+\lfoot{\footnotesize\mysffamily\allcaps{abcdef}\quad$\cdot$\quad\allcaps{e}\hspace{-0.3pt}f\allcaps{d}}
+\rfoot{\footnotesize\mysffamily\thepage}
 
 % Mark coursework end
 % -------------------
